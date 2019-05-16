@@ -1,0 +1,28 @@
+version: "3"
+services:
+  gitbase-web:
+    image: srcd/gitbase-web:latest
+    environment: 
+    - "GITBASEPG_DB_CONNECTION=root@tcp(gitbase:3306)/none"
+    ports:
+    - "8080:8080"
+  redis_db:
+    image: redis
+    ports:
+      - "6379:6379"
+  cube:
+    build: ./cube
+    env_file: .env
+    ports: 
+    - "4000:4000"
+    volumes:
+      - ./cube/schema:/usr/src/app/schema
+    command: node index.js
+  gitbase:
+    container_name: gitbase
+    hostname: gitbase
+    image: srcd/gitbase:v0.20.0-rc2
+    volumes: 
+    - "./git-demos:/opt/repos"
+    ports:
+    - "3306:3306"
