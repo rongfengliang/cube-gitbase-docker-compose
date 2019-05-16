@@ -1,6 +1,6 @@
 cube(`Repositories`, {
   sql: `SELECT * FROM gitbase.repositories`,
-  
+  title:"git 仓库",
   joins: {
     
   },
@@ -21,6 +21,7 @@ cube(`Repositories`, {
     repositoryId2: {
       sql: `repository_id`,
       type: `string`,
+      title:"仓库名称"
     },
   }
 });

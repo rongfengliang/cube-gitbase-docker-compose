@@ -1,6 +1,6 @@
 cube(`Blobs`, {
   sql: `SELECT * FROM gitbase.blobs`,
-  
+  title: "blobs文件",
   joins: {
     Repositories: {
       sql: `${CUBE}.repository_id = ${Repositories}.repository_id`,

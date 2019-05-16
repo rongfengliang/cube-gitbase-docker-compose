@@ -1,6 +1,6 @@
 cube(`Commits`, {
   sql: `SELECT * FROM gitbase.commits`,
-  
+  title: "提交",
   joins: {
     Repositories: {
       sql: `${CUBE}.repository_id = ${Repositories}.repository_id`,
@@ -18,7 +18,8 @@ cube(`Commits`, {
   dimensions: {
     committerName: {
       sql: `committer_name`,
-      type: `string`
+      type: `string`,
+      title: `提交者`
     },
     
     repositoryId: {
@@ -29,15 +30,18 @@ cube(`Commits`, {
     repositoryId2: {
       sql: `repository_id`,
       type: `string`,
+      title: `仓库`
     },
     commitAuthorName: {
       sql: `commit_author_name`,
-      type: `string`
+      type: `string`,
+      title: `作者`
     },
     
     commitAuthorEmail: {
       sql: `commit_author_email`,
-      type: `string`
+      type: `string`,
+      title: `作者email`
     },
     
     commitHash: {
@@ -47,12 +51,14 @@ cube(`Commits`, {
     
     committerEmail: {
       sql: `committer_email`,
-      type: `string`
+      type: `string`,
+      title: `提交者email`
     },
     
     commitMessage: {
       sql: `commit_message`,
-      type: `string`
+      type: `string`,
+      title: `提交消息`
     },
     
     treeHash: {
