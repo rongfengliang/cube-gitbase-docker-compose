@@ -4,6 +4,7 @@ services:
     image: srcd/gitbase-web:latest
     environment: 
     - "GITBASEPG_DB_CONNECTION=root@tcp(gitbase:3306)/none"
+    - "GITBASEPG_BBLFSH_SERVER_URL=bblfsh:9432"
     ports:
     - "8080:8080"
   redis_db:
@@ -26,3 +27,8 @@ services:
     - "./git-demos:/opt/repos"
     ports:
     - "3306:3306"
+  bblfsh:
+    image: "bblfsh/bblfshd:v2.12.1-drivers"
+    privileged: true
+    ports: 
+    - "9432:9432"
